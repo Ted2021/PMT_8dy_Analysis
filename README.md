@@ -3,4 +3,10 @@
 ## 概要
 - 8dyPMTのノイズ解析スクリプト
 
-### pushができない
+### ディレクトリ内容
+- scripts
+-- python
+-- macros
+
+- notebook
+-- jupyter notebok
