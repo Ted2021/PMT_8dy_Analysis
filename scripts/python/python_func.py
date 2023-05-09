@@ -1,6 +1,7 @@
 #平均波形の計算を行う関数
 """
 引数:ROOTファイルのパス, Tree名, branch(channel: 0=>DRS4_CH0&1, 1=>DRS4_CH3&2)
+戻り値: 平均時間, 平均波形
 """
 def CalcAverage(file_path, tree_name = "Treedark_0", channel):
     if channel == 0:
@@ -19,6 +20,7 @@ def CalcAverage(file_path, tree_name = "Treedark_0", channel):
 #ノイズを計算する関数
 """
 引数:ROOTファイルのパス, 平均波形, Tree名, branch(channel: 0=>DRS4_CH0&1, 1=>DRS4_CH3&2), 閾値
+戻り値:ノイズevent, ノイズcell, ノイズ電荷
 """
 def NoiseAnalysis(file_path, average_wave, channel, tree_name = "Treedark_0", thres = 10):
     if channel == 0:
