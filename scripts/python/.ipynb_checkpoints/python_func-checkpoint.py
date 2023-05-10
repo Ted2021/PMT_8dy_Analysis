@@ -1,5 +1,9 @@
 import ROOT as RT
 
+#マクロの読み込み
+RT.gROOT.LoadMacro("/Users/kiyomoto/reaserch/8dy_Noise/scripts/macros/average_wave.h")
+RT.gROOT.LoadMacro("/Users/kiyomoto/reaserch/8dy_Noise/scripts/macros/Noise_counts.h")
+
 #平均波形の計算を行う関数
 """
 引数:ROOTファイルのパス, Tree名, branch(channel: 0=>DRS4_CH0&1, 1=>DRS4_CH3&2)
