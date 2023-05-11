@@ -63,9 +63,11 @@ int NoiseAnalysis(TString filesrc, TString treename, TString wf_p, TString wf_n,
     float data_time[1024];
     float wfp[1024] = {0};
     float wfn[1024] = {0};
+    int sc = 0;
     tr->SetBranchAddress("time", data_time);
     tr->SetBranchAddress(wf_p,wfp);
     tr->SetBranchAddress(wf_n,wfn);
+    tr->SetBranchAddress("stopcell",&sc);
     int nEve = tr->GetEntries();
     int state = 0;
     int start_cell;
@@ -83,7 +85,7 @@ int NoiseAnalysis(TString filesrc, TString treename, TString wf_p, TString wf_n,
         tr->GetEntry(i);
         for(int l=10;l<1019;l++)
         {
-            if(l%1024==392)
+            if((l+sc)%1024==392)
 	        {
 	          wfp[l] = (wfp[l-1] + wfp[l+1])*0.5; 
 	          wfn[l] = (wfn[l-1] + wfn[l+1])*0.5; 

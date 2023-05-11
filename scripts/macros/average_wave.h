@@ -14,9 +14,11 @@ void Average_Make(TString filesrc, TString treename, TString wavep, TString wave
     float data_time[1024];
     float wfp[1024] = {0};
     float wfn[1024] = {0};
+    int sc = 0;
     tr->SetBranchAddress("time", data_time);
     tr->SetBranchAddress(wavep,wfp);
     tr->SetBranchAddress(waven,wfn);
+    tr->SetBranchAddress("stopcell",&sc);
     int nEve = tr->GetEntries();
 
     float ave_wave[1024] = {0};
@@ -26,7 +28,7 @@ void Average_Make(TString filesrc, TString treename, TString wavep, TString wave
         tr->GetEntry(i);
         for(int l=0;l<1024;l++)
         {
-            if(l%1024==392)
+            if((l+sc)%1024==392)
 	        {
 	          wfp[l] = (wfp[l-1] + wfp[l+1])*0.5; 
 	          wfn[l] = (wfn[l-1] + wfn[l+1])*0.5; 
